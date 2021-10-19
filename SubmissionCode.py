@@ -1,11 +1,9 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[19]:
-
-
 import numpy as np
 import csv
+
 def compute_ln_norm_distance(vector1, vector2, n):
     vector_len = len(vector1)
     diff_vector = []
@@ -38,21 +36,16 @@ def classify_points_using_knn(train_X, train_Y, test_X, n_in_ln_norm_distance, k
       test_Y.append(most_frequent_label)
     return test_Y
 
-a=np.genfromtxt('train_X.csv',delimiter=',')
-b=np.genfromtxt('train_Y.csv',delimiter=',')
-a=np.delete(a,0,0)
-co=np.shape(a)[0]
-ro=np.shape(a)[1]
-aw=np.empty(co, dtype=int)
+a = np.genfromtxt('train_X.csv', delimiter=',')
+b = np.genfromtxt('train_Y.csv', delimiter=',')
+a = np.delete(a, 0, 0)
+co = np.shape(a)[0]
+ro = np.shape(a)[1]
+aw = np.empty(co, dtype=int)
 test_Y = classify_points_using_knn(a, b, a, 3, 3)
-for qw in range(0,len(test_Y)):
-    aw[qw]=test_Y[qw]
-aw=aw.reshape(co,1)
+
+for qw in range(0, len(test_Y)):
+    aw[qw] = test_Y[qw]
+
+aw = aw.reshape(co, 1)
 np.savetxt("predicted_test_Y.csv", aw, delimiter=",")
-
-
-# In[ ]:
-
-
-
-
